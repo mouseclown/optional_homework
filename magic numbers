@@ -1,0 +1,14 @@
+#initial variable definition
+
+            k=0
+            self.curr_wp = 0
+
+#we change the maximum angular rate and maximum velocity so that our magabot's encoders and IMU don't commit as much mistakes.
+
+            if math.fabs(angular)>0.3:
+                angular = 0.3*(angular/math.fabs(angular))
+            if math.fabs(angular)<0.2:
+                linear = 0.15
+
+#change the counter of the next waypoint so that it makes jumps of 5 os that the control is smoother
+          self.curr_wp =self.curr_wp + 5 
